@@ -1,0 +1,146 @@
+---
+import { Markdown } from 'astro/components';
+
+const buildDate = new Date();
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Greyson Richey</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Hi, I'm Greyson! (he/him) ❤️</h1>
+      </header>
+      <section>
+        <h2>🖥 Software Engineer</h2>
+        <Markdown>
+          - Tons of frontend
+          - A fair amount of backend
+          - So many frameworks (who's in charge of the JS ecosystem anyway?)
+          - Loves JavaScript, don't @ me
+        </Markdown>
+      </section>
+      <section>
+        <h2>👾 Game Design Hobbyist</h2>
+        <Markdown>
+          - Shipped a game you've never heard of on Steam
+          - ~4 game jams a year
+          - Countless neglected prototypes
+          - Big ambitions, but it pays like garbage
+        </Markdown>
+      </section>
+      <section>
+        <h2>🎮 Gamer</h2>
+        <Markdown>
+          - Factorio is king
+          - Strategy games of all types are cool
+          - Kerbal Space Program is also king
+          - 100% complete 0% of my library
+        </Markdown>
+      </section>
+      <section>
+        <h2>🤘 Metalhead</h2>
+        <Markdown>
+          - Protest The Hero is my happy place
+          - Infant Annihilator is my angry face
+          - Djent dj-dj-djent dj-dj-djen dj-djent
+          - Sing me pretty or sing me death (I like both)
+        </Markdown>
+      </section>
+      <section>
+        <h2>👀 Find Me On</h2>
+        <ul>
+          <li><a href="https://github.com/bloodyaugust">Github</a></li>
+          <li><a href="https://twitter.com/bloodyaugust">Twitter</a></li>
+          <li><a href="https://synsugarstudio.itch.io/">Itch.io</a></li>
+          <li><a href="https://www.linkedin.com/in/greysonrichey/">Linkedin</a></li>
+        </ul>
+      </section>
+      <section class="projects-container">
+        <h2>📘 Projects</h2>
+        <span>Coming Soon...</span>
+      </section>
+      <footer>Built with <a href="https://astro.build">Astro</a>, updated {buildDate.toLocaleDateString()}</footer>
+    </main>
+  </body>
+</html>
+
+<style>
+  a {
+    color: rgba(255, 255, 255, 0.87);
+  }
+  a:visited {
+    color: rgba(255, 255, 255, 0.38);
+  }
+
+  body {
+    background: rgb(18, 18, 18);
+    color: rgba(255, 255, 255, 0.87);
+    margin: 1rem;
+    font-size: large;
+  }
+
+  footer {
+    text-align: center;
+    grid-column: span 1;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  h2 {
+    margin: 0 0 1rem 0;
+  }
+
+  header {
+    grid-column: span 1;
+    justify-self: center;
+  }
+
+  main {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 100%;
+    overflow: auto;
+  }
+
+  section {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px 1px rgba(255, 255, 255, 0.02);
+    padding: 1rem;
+  }
+
+  :global(ul) {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .projects-container {
+    grid-column: span 1;
+    justify-self: center;
+  }
+
+  @media screen and (min-width: 900px) {
+    footer {
+      grid-column: span 2;
+    }
+
+    header {
+      grid-column: span 2;
+    }
+
+    main {
+      grid-template-columns: 50% 50%;
+    }
+
+    .projects-container {
+      grid-column: span 2;
+    }
+  }
+</style>

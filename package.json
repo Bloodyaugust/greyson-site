@@ -1,0 +1,13 @@
+{
+  "name": "greyson-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "astro dev",
+    "build": "astro build"
+  },
+  "devDependencies": {
+    "astro": "^0.16.3",
+    "@astrojs/renderer-react": "^0.1.4"
+  }
+}
