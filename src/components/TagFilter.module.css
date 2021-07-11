@@ -1,3 +1,7 @@
+button {
+  font-size: large;
+}
+
 .button-inactive {
   background-color: grey;
 }
