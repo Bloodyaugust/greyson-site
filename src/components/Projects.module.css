@@ -1,0 +1,27 @@
+.project-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px 1px rgba(255, 255, 255, 0.02);
+  grid-column: span 1;
+  padding: 1rem;
+}
+
+.project-filters {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px 1px rgba(255, 255, 255, 0.02);
+  display: flex;
+  gap: 0.25rem;
+}
+
+.projects {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.projects-container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}

@@ -1,7 +1,22 @@
 ---
 import { Markdown } from 'astro/components';
+import Projects from '../components/Projects.jsx';
 
+const projects = Astro.fetchContent('../projects/**/*.md');
+const projectsByTag = {};
 const buildDate = new Date();
+
+projects.forEach(project => {
+  let tags = project.astro.html.match(/<p>tags(?<tags>.*)<\/p>/)?.groups?.tags?.split(',').map(tag => tag.replace(' ', '')).map(tag => tag.replace(':', '')) ?? [];
+
+  tags.forEach(tag => {
+    if (projectsByTag[tag] === undefined) {
+      projectsByTag[tag] = [];
+    }
+
+    projectsByTag[tag].push(project);
+  });
+});
 ---
 <html lang="en">
   <head>
@@ -52,6 +67,15 @@ const buildDate = new Date();
         </Markdown>
       </section>
       <section>
+        <h2>🐶😻 Fur Parent</h2>
+        <Markdown>
+          - Khufu: The Princess of Egypt
+          - Gobi: The One-Eyed Super Mutt
+          - Tesla: The Queen of the House
+          - Coil: The Mini Pterodactyl
+        </Markdown>
+      </section>
+      <section>
         <h2>👀 Find Me On</h2>
         <ul>
           <li><a href="https://github.com/bloodyaugust">Github</a></li>
@@ -62,7 +86,7 @@ const buildDate = new Date();
       </section>
       <section class="projects-container">
         <h2>📘 Projects</h2>
-        <span>Coming Soon...</span>
+        <Projects:visible projects={projects} projectsByTag={projectsByTag} />
       </section>
       <footer>Built with <a href="https://astro.build">Astro</a>, updated {buildDate.toLocaleDateString()}</footer>
     </main>
@@ -80,7 +104,7 @@ const buildDate = new Date();
   body {
     background: rgb(18, 18, 18);
     color: rgba(255, 255, 255, 0.87);
-    margin: 1rem;
+    margin: 0;
     font-size: large;
   }
 
@@ -105,8 +129,8 @@ const buildDate = new Date();
   main {
     display: grid;
     gap: 1rem;
-    grid-template-columns: 100%;
-    overflow: auto;
+    grid-template-columns: 1fr;
+    padding: 1rem;
   }
 
   section {
@@ -124,6 +148,7 @@ const buildDate = new Date();
   .projects-container {
     grid-column: span 1;
     justify-self: center;
+    width: calc(100% - 2rem);
   }
 
   @media screen and (min-width: 900px) {
@@ -136,7 +161,7 @@ const buildDate = new Date();
     }
 
     main {
-      grid-template-columns: 50% 50%;
+      grid-template-columns: 1fr 1fr;
     }
 
     .projects-container {
